@@ -1,0 +1,1374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище InsuranceMedicalCompanyModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="ID_Addresses" />
+          </Key>
+          <Property Name="ID_Addresses" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Cities" Type="int" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apartment" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID_Cities" />
+          </Key>
+          <Property Name="ID_Cities" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Countries" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClaimStatuses">
+          <Key>
+            <PropertyRef Name="ID_ClaimStatuses" />
+          </Key>
+          <Property Name="ID_ClaimStatuses" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientPayments">
+          <Key>
+            <PropertyRef Name="ID_ClientPayments" />
+          </Key>
+          <Property Name="ID_ClientPayments" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_InsuranceContracts" Type="int" Nullable="false" />
+          <Property Name="ID_PaymentTypes" Type="int" Nullable="false" />
+          <Property Name="ID_PaymentStatuses" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Clients" />
+          </Key>
+          <Property Name="ID_Clients" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="ID_Genders" Type="int" Nullable="false" />
+          <Property Name="PassportNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ID_Addresses" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContractStatuses">
+          <Key>
+            <PropertyRef Name="ID_ContractStatuses" />
+          </Key>
+          <Property Name="ID_ContractStatuses" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID_Countries" />
+          </Key>
+          <Property Name="ID_Countries" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacilityTypes">
+          <Key>
+            <PropertyRef Name="ID_FacilityTypes" />
+          </Key>
+          <Property Name="ID_FacilityTypes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacilityTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="ID_Genders" />
+          </Key>
+          <Property Name="ID_Genders" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inspectors">
+          <Key>
+            <PropertyRef Name="ID_Inspectors" />
+          </Key>
+          <Property Name="ID_Inspectors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InsuranceClaims">
+          <Key>
+            <PropertyRef Name="ID_InsuranceClaims" />
+          </Key>
+          <Property Name="ID_InsuranceClaims" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_InsuranceContracts" Type="int" Nullable="false" />
+          <Property Name="ID_Inspectors" Type="int" Nullable="false" />
+          <Property Name="ID_ClaimStatuses" Type="int" Nullable="false" />
+          <Property Name="ClaimDate" Type="date" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ApprovedDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InsuranceContracts">
+          <Key>
+            <PropertyRef Name="ID_InsuranceContracts" />
+          </Key>
+          <Property Name="ID_InsuranceContracts" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Clients" Type="int" Nullable="false" />
+          <Property Name="ID_ContractStatuses" Type="int" Nullable="false" />
+          <Property Name="PolicyNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContractDate" Type="date" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="PremiumAmount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CoverageTerms" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceStatuses">
+          <Key>
+            <PropertyRef Name="ID_InvoiceStatuses" />
+          </Key>
+          <Property Name="ID_InvoiceStatuses" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicalFacilities">
+          <Key>
+            <PropertyRef Name="ID_MedicalFacilities" />
+          </Key>
+          <Property Name="ID_MedicalFacilities" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_FacilityTypes" Type="int" Nullable="false" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID_Addresses" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicalInvoices">
+          <Key>
+            <PropertyRef Name="ID_MedicalInvoices" />
+          </Key>
+          <Property Name="ID_MedicalInvoices" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_MedicalFacilities" Type="int" Nullable="false" />
+          <Property Name="ID_Referrals" Type="int" Nullable="false" />
+          <Property Name="ID_InvoiceStatuses" Type="int" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InvoiceDate" Type="date" Nullable="false" />
+          <Property Name="ServiceDescription" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="PaymentDate" Type="date" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentStatuses">
+          <Key>
+            <PropertyRef Name="ID_PaymentStatuses" />
+          </Key>
+          <Property Name="ID_PaymentStatuses" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="ID_PaymentTypes" />
+          </Key>
+          <Property Name="ID_PaymentTypes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentTypeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Referrals">
+          <Key>
+            <PropertyRef Name="ID_Referrals" />
+          </Key>
+          <Property Name="ID_Referrals" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_InsuranceClaims" Type="int" Nullable="false" />
+          <Property Name="ID_Clients" Type="int" Nullable="false" />
+          <Property Name="ID_MedicalFacilities" Type="int" Nullable="false" />
+          <Property Name="ReferralDate" Type="date" Nullable="false" />
+          <Property Name="ReferralNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="char" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Addresses_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="ID_Cities" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="ID_Cities" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID_Countries" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="ID_Countries" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientPayments_InsuranceContracts">
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="1" />
+          <End Role="ClientPayments" Type="Self.ClientPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceContracts">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Principal>
+            <Dependent Role="ClientPayments">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientPayments_PaymentStatuses">
+          <End Role="PaymentStatuses" Type="Self.PaymentStatuses" Multiplicity="1" />
+          <End Role="ClientPayments" Type="Self.ClientPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentStatuses">
+              <PropertyRef Name="ID_PaymentStatuses" />
+            </Principal>
+            <Dependent Role="ClientPayments">
+              <PropertyRef Name="ID_PaymentStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientPayments_PaymentTypes">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1" />
+          <End Role="ClientPayments" Type="Self.ClientPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="ID_PaymentTypes" />
+            </Principal>
+            <Dependent Role="ClientPayments">
+              <PropertyRef Name="ID_PaymentTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Addresses">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="ID_Addresses" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="ID_Addresses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="ID_Genders" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="ID_Genders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceClaims_ClaimStatuses">
+          <End Role="ClaimStatuses" Type="Self.ClaimStatuses" Multiplicity="1" />
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClaimStatuses">
+              <PropertyRef Name="ID_ClaimStatuses" />
+            </Principal>
+            <Dependent Role="InsuranceClaims">
+              <PropertyRef Name="ID_ClaimStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceClaims_Inspectors">
+          <End Role="Inspectors" Type="Self.Inspectors" Multiplicity="1" />
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inspectors">
+              <PropertyRef Name="ID_Inspectors" />
+            </Principal>
+            <Dependent Role="InsuranceClaims">
+              <PropertyRef Name="ID_Inspectors" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceClaims_InsuranceContracts">
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="1" />
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceContracts">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Principal>
+            <Dependent Role="InsuranceClaims">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContracts_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Clients" />
+            </Principal>
+            <Dependent Role="InsuranceContracts">
+              <PropertyRef Name="ID_Clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContracts_ContractStatuses">
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="1" />
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractStatuses">
+              <PropertyRef Name="ID_ContractStatuses" />
+            </Principal>
+            <Dependent Role="InsuranceContracts">
+              <PropertyRef Name="ID_ContractStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalFacilities_Addresses">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="ID_Addresses" />
+            </Principal>
+            <Dependent Role="MedicalFacilities">
+              <PropertyRef Name="ID_Addresses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalFacilities_FacilityTypes">
+          <End Role="FacilityTypes" Type="Self.FacilityTypes" Multiplicity="1" />
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityTypes">
+              <PropertyRef Name="ID_FacilityTypes" />
+            </Principal>
+            <Dependent Role="MedicalFacilities">
+              <PropertyRef Name="ID_FacilityTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalInvoices_InvoiceStatuses">
+          <End Role="InvoiceStatuses" Type="Self.InvoiceStatuses" Multiplicity="1" />
+          <End Role="MedicalInvoices" Type="Self.MedicalInvoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceStatuses">
+              <PropertyRef Name="ID_InvoiceStatuses" />
+            </Principal>
+            <Dependent Role="MedicalInvoices">
+              <PropertyRef Name="ID_InvoiceStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalInvoices_MedicalFacilities">
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="1" />
+          <End Role="MedicalInvoices" Type="Self.MedicalInvoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalFacilities">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Principal>
+            <Dependent Role="MedicalInvoices">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalInvoices_Referrals">
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="1" />
+          <End Role="MedicalInvoices" Type="Self.MedicalInvoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Referrals">
+              <PropertyRef Name="ID_Referrals" />
+            </Principal>
+            <Dependent Role="MedicalInvoices">
+              <PropertyRef Name="ID_Referrals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Clients" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ID_Clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_InsuranceClaims">
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceClaims">
+              <PropertyRef Name="ID_InsuranceClaims" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ID_InsuranceClaims" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_MedicalFacilities">
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalFacilities">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище InsuranceMedicalCompanyModelContainer">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClaimStatuses" EntityType="Self.ClaimStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientPayments" EntityType="Self.ClientPayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractStatuses" EntityType="Self.ContractStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityTypes" EntityType="Self.FacilityTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspectors" EntityType="Self.Inspectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsuranceClaims" EntityType="Self.InsuranceClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsuranceContracts" EntityType="Self.InsuranceContracts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceStatuses" EntityType="Self.InvoiceStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalFacilities" EntityType="Self.MedicalFacilities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalInvoices" EntityType="Self.MedicalInvoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentStatuses" EntityType="Self.PaymentStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Referrals" EntityType="Self.Referrals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Addresses_Cities" Association="Self.FK_Addresses_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientPayments_InsuranceContracts" Association="Self.FK_ClientPayments_InsuranceContracts">
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+            <End Role="ClientPayments" EntitySet="ClientPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientPayments_PaymentStatuses" Association="Self.FK_ClientPayments_PaymentStatuses">
+            <End Role="PaymentStatuses" EntitySet="PaymentStatuses" />
+            <End Role="ClientPayments" EntitySet="ClientPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientPayments_PaymentTypes" Association="Self.FK_ClientPayments_PaymentTypes">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="ClientPayments" EntitySet="ClientPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Addresses" Association="Self.FK_Clients_Addresses">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Genders" Association="Self.FK_Clients_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceClaims_ClaimStatuses" Association="Self.FK_InsuranceClaims_ClaimStatuses">
+            <End Role="ClaimStatuses" EntitySet="ClaimStatuses" />
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceClaims_Inspectors" Association="Self.FK_InsuranceClaims_Inspectors">
+            <End Role="Inspectors" EntitySet="Inspectors" />
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceClaims_InsuranceContracts" Association="Self.FK_InsuranceClaims_InsuranceContracts">
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContracts_Clients" Association="Self.FK_InsuranceContracts_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContracts_ContractStatuses" Association="Self.FK_InsuranceContracts_ContractStatuses">
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalFacilities_Addresses" Association="Self.FK_MedicalFacilities_Addresses">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalFacilities_FacilityTypes" Association="Self.FK_MedicalFacilities_FacilityTypes">
+            <End Role="FacilityTypes" EntitySet="FacilityTypes" />
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalInvoices_InvoiceStatuses" Association="Self.FK_MedicalInvoices_InvoiceStatuses">
+            <End Role="InvoiceStatuses" EntitySet="InvoiceStatuses" />
+            <End Role="MedicalInvoices" EntitySet="MedicalInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalInvoices_MedicalFacilities" Association="Self.FK_MedicalInvoices_MedicalFacilities">
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+            <End Role="MedicalInvoices" EntitySet="MedicalInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalInvoices_Referrals" Association="Self.FK_MedicalInvoices_Referrals">
+            <End Role="Referrals" EntitySet="Referrals" />
+            <End Role="MedicalInvoices" EntitySet="MedicalInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Clients" Association="Self.FK_Referrals_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_InsuranceClaims" Association="Self.FK_Referrals_InsuranceClaims">
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_MedicalFacilities" Association="Self.FK_Referrals_MedicalFacilities">
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InsuranceMedicalCompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="ID_Addresses" />
+          </Key>
+          <Property Name="ID_Addresses" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Cities" Type="Int32" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="House" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apartment" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Addresses_Cities" FromRole="Addresses" ToRole="Cities" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Addresses" FromRole="Addresses" ToRole="Clients" />
+          <NavigationProperty Name="MedicalFacilities" Relationship="Self.FK_MedicalFacilities_Addresses" FromRole="Addresses" ToRole="MedicalFacilities" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID_Cities" />
+          </Key>
+          <Property Name="ID_Cities" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Countries" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Addresses_Cities" FromRole="Cities" ToRole="Addresses" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Cities_Countries" FromRole="Cities" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="ClaimStatuses">
+          <Key>
+            <PropertyRef Name="ID_ClaimStatuses" />
+          </Key>
+          <Property Name="ID_ClaimStatuses" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InsuranceClaims" Relationship="Self.FK_InsuranceClaims_ClaimStatuses" FromRole="ClaimStatuses" ToRole="InsuranceClaims" />
+        </EntityType>
+        <EntityType Name="ClientPayments">
+          <Key>
+            <PropertyRef Name="ID_ClientPayments" />
+          </Key>
+          <Property Name="ID_ClientPayments" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_InsuranceContracts" Type="Int32" Nullable="false" />
+          <Property Name="ID_PaymentTypes" Type="Int32" Nullable="false" />
+          <Property Name="ID_PaymentStatuses" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InsuranceContracts" Relationship="Self.FK_ClientPayments_InsuranceContracts" FromRole="ClientPayments" ToRole="InsuranceContracts" />
+          <NavigationProperty Name="PaymentStatuses" Relationship="Self.FK_ClientPayments_PaymentStatuses" FromRole="ClientPayments" ToRole="PaymentStatuses" />
+          <NavigationProperty Name="PaymentTypes" Relationship="Self.FK_ClientPayments_PaymentTypes" FromRole="ClientPayments" ToRole="PaymentTypes" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Clients" />
+          </Key>
+          <Property Name="ID_Clients" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_Genders" Type="Int32" Nullable="false" />
+          <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Addresses" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Clients_Addresses" FromRole="Clients" ToRole="Addresses" />
+          <NavigationProperty Name="Genders" Relationship="Self.FK_Clients_Genders" FromRole="Clients" ToRole="Genders" />
+          <NavigationProperty Name="InsuranceContracts" Relationship="Self.FK_InsuranceContracts_Clients" FromRole="Clients" ToRole="InsuranceContracts" />
+          <NavigationProperty Name="Referrals" Relationship="Self.FK_Referrals_Clients" FromRole="Clients" ToRole="Referrals" />
+        </EntityType>
+        <EntityType Name="ContractStatuses">
+          <Key>
+            <PropertyRef Name="ID_ContractStatuses" />
+          </Key>
+          <Property Name="ID_ContractStatuses" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InsuranceContracts" Relationship="Self.FK_InsuranceContracts_ContractStatuses" FromRole="ContractStatuses" ToRole="InsuranceContracts" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID_Countries" />
+          </Key>
+          <Property Name="ID_Countries" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Countries" FromRole="Countries" ToRole="Cities" />
+        </EntityType>
+        <EntityType Name="FacilityTypes">
+          <Key>
+            <PropertyRef Name="ID_FacilityTypes" />
+          </Key>
+          <Property Name="ID_FacilityTypes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacilityTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MedicalFacilities" Relationship="Self.FK_MedicalFacilities_FacilityTypes" FromRole="FacilityTypes" ToRole="MedicalFacilities" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="ID_Genders" />
+          </Key>
+          <Property Name="ID_Genders" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Genders" FromRole="Genders" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="Inspectors">
+          <Key>
+            <PropertyRef Name="ID_Inspectors" />
+          </Key>
+          <Property Name="ID_Inspectors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InsuranceClaims" Relationship="Self.FK_InsuranceClaims_Inspectors" FromRole="Inspectors" ToRole="InsuranceClaims" />
+        </EntityType>
+        <EntityType Name="InsuranceClaims">
+          <Key>
+            <PropertyRef Name="ID_InsuranceClaims" />
+          </Key>
+          <Property Name="ID_InsuranceClaims" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_InsuranceContracts" Type="Int32" Nullable="false" />
+          <Property Name="ID_Inspectors" Type="Int32" Nullable="false" />
+          <Property Name="ID_ClaimStatuses" Type="Int32" Nullable="false" />
+          <Property Name="ClaimDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApprovedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ClaimStatuses" Relationship="Self.FK_InsuranceClaims_ClaimStatuses" FromRole="InsuranceClaims" ToRole="ClaimStatuses" />
+          <NavigationProperty Name="Inspectors" Relationship="Self.FK_InsuranceClaims_Inspectors" FromRole="InsuranceClaims" ToRole="Inspectors" />
+          <NavigationProperty Name="InsuranceContracts" Relationship="Self.FK_InsuranceClaims_InsuranceContracts" FromRole="InsuranceClaims" ToRole="InsuranceContracts" />
+          <NavigationProperty Name="Referrals" Relationship="Self.FK_Referrals_InsuranceClaims" FromRole="InsuranceClaims" ToRole="Referrals" />
+        </EntityType>
+        <EntityType Name="InsuranceContracts">
+          <Key>
+            <PropertyRef Name="ID_InsuranceContracts" />
+          </Key>
+          <Property Name="ID_InsuranceContracts" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Clients" Type="Int32" Nullable="false" />
+          <Property Name="ID_ContractStatuses" Type="Int32" Nullable="false" />
+          <Property Name="PolicyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContractDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PremiumAmount" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CoverageTerms" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientPayments" Relationship="Self.FK_ClientPayments_InsuranceContracts" FromRole="InsuranceContracts" ToRole="ClientPayments" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_InsuranceContracts_Clients" FromRole="InsuranceContracts" ToRole="Clients" />
+          <NavigationProperty Name="ContractStatuses" Relationship="Self.FK_InsuranceContracts_ContractStatuses" FromRole="InsuranceContracts" ToRole="ContractStatuses" />
+          <NavigationProperty Name="InsuranceClaims" Relationship="Self.FK_InsuranceClaims_InsuranceContracts" FromRole="InsuranceContracts" ToRole="InsuranceClaims" />
+        </EntityType>
+        <EntityType Name="InvoiceStatuses">
+          <Key>
+            <PropertyRef Name="ID_InvoiceStatuses" />
+          </Key>
+          <Property Name="ID_InvoiceStatuses" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MedicalInvoices" Relationship="Self.FK_MedicalInvoices_InvoiceStatuses" FromRole="InvoiceStatuses" ToRole="MedicalInvoices" />
+        </EntityType>
+        <EntityType Name="MedicalFacilities">
+          <Key>
+            <PropertyRef Name="ID_MedicalFacilities" />
+          </Key>
+          <Property Name="ID_MedicalFacilities" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_FacilityTypes" Type="Int32" Nullable="false" />
+          <Property Name="FacilityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Addresses" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_MedicalFacilities_Addresses" FromRole="MedicalFacilities" ToRole="Addresses" />
+          <NavigationProperty Name="FacilityTypes" Relationship="Self.FK_MedicalFacilities_FacilityTypes" FromRole="MedicalFacilities" ToRole="FacilityTypes" />
+          <NavigationProperty Name="MedicalInvoices" Relationship="Self.FK_MedicalInvoices_MedicalFacilities" FromRole="MedicalFacilities" ToRole="MedicalInvoices" />
+          <NavigationProperty Name="Referrals" Relationship="Self.FK_Referrals_MedicalFacilities" FromRole="MedicalFacilities" ToRole="Referrals" />
+        </EntityType>
+        <EntityType Name="MedicalInvoices">
+          <Key>
+            <PropertyRef Name="ID_MedicalInvoices" />
+          </Key>
+          <Property Name="ID_MedicalInvoices" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_MedicalFacilities" Type="Int32" Nullable="false" />
+          <Property Name="ID_Referrals" Type="Int32" Nullable="false" />
+          <Property Name="ID_InvoiceStatuses" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ServiceDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InvoiceStatuses" Relationship="Self.FK_MedicalInvoices_InvoiceStatuses" FromRole="MedicalInvoices" ToRole="InvoiceStatuses" />
+          <NavigationProperty Name="MedicalFacilities" Relationship="Self.FK_MedicalInvoices_MedicalFacilities" FromRole="MedicalInvoices" ToRole="MedicalFacilities" />
+          <NavigationProperty Name="Referrals" Relationship="Self.FK_MedicalInvoices_Referrals" FromRole="MedicalInvoices" ToRole="Referrals" />
+        </EntityType>
+        <EntityType Name="PaymentStatuses">
+          <Key>
+            <PropertyRef Name="ID_PaymentStatuses" />
+          </Key>
+          <Property Name="ID_PaymentStatuses" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientPayments" Relationship="Self.FK_ClientPayments_PaymentStatuses" FromRole="PaymentStatuses" ToRole="ClientPayments" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="ID_PaymentTypes" />
+          </Key>
+          <Property Name="ID_PaymentTypes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientPayments" Relationship="Self.FK_ClientPayments_PaymentTypes" FromRole="PaymentTypes" ToRole="ClientPayments" />
+        </EntityType>
+        <EntityType Name="Referrals">
+          <Key>
+            <PropertyRef Name="ID_Referrals" />
+          </Key>
+          <Property Name="ID_Referrals" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_InsuranceClaims" Type="Int32" Nullable="false" />
+          <Property Name="ID_Clients" Type="Int32" Nullable="false" />
+          <Property Name="ID_MedicalFacilities" Type="Int32" Nullable="false" />
+          <Property Name="ReferralDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReferralNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Referrals_Clients" FromRole="Referrals" ToRole="Clients" />
+          <NavigationProperty Name="InsuranceClaims" Relationship="Self.FK_Referrals_InsuranceClaims" FromRole="Referrals" ToRole="InsuranceClaims" />
+          <NavigationProperty Name="MedicalFacilities" Relationship="Self.FK_Referrals_MedicalFacilities" FromRole="Referrals" ToRole="MedicalFacilities" />
+          <NavigationProperty Name="MedicalInvoices" Relationship="Self.FK_MedicalInvoices_Referrals" FromRole="Referrals" ToRole="MedicalInvoices" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Addresses_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="ID_Cities" />
+            </Principal>
+            <Dependent Role="Addresses">
+              <PropertyRef Name="ID_Cities" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Addresses">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="ID_Addresses" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="ID_Addresses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalFacilities_Addresses">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="ID_Addresses" />
+            </Principal>
+            <Dependent Role="MedicalFacilities">
+              <PropertyRef Name="ID_Addresses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="ID_Countries" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="ID_Countries" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceClaims_ClaimStatuses">
+          <End Role="ClaimStatuses" Type="Self.ClaimStatuses" Multiplicity="1" />
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClaimStatuses">
+              <PropertyRef Name="ID_ClaimStatuses" />
+            </Principal>
+            <Dependent Role="InsuranceClaims">
+              <PropertyRef Name="ID_ClaimStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientPayments_InsuranceContracts">
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="1" />
+          <End Role="ClientPayments" Type="Self.ClientPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceContracts">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Principal>
+            <Dependent Role="ClientPayments">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientPayments_PaymentStatuses">
+          <End Role="PaymentStatuses" Type="Self.PaymentStatuses" Multiplicity="1" />
+          <End Role="ClientPayments" Type="Self.ClientPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentStatuses">
+              <PropertyRef Name="ID_PaymentStatuses" />
+            </Principal>
+            <Dependent Role="ClientPayments">
+              <PropertyRef Name="ID_PaymentStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientPayments_PaymentTypes">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1" />
+          <End Role="ClientPayments" Type="Self.ClientPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="ID_PaymentTypes" />
+            </Principal>
+            <Dependent Role="ClientPayments">
+              <PropertyRef Name="ID_PaymentTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Genders">
+          <End Role="Genders" Type="Self.Genders" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genders">
+              <PropertyRef Name="ID_Genders" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="ID_Genders" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContracts_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Clients" />
+            </Principal>
+            <Dependent Role="InsuranceContracts">
+              <PropertyRef Name="ID_Clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Clients" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ID_Clients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceContracts_ContractStatuses">
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="1" />
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractStatuses">
+              <PropertyRef Name="ID_ContractStatuses" />
+            </Principal>
+            <Dependent Role="InsuranceContracts">
+              <PropertyRef Name="ID_ContractStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalFacilities_FacilityTypes">
+          <End Role="FacilityTypes" Type="Self.FacilityTypes" Multiplicity="1" />
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FacilityTypes">
+              <PropertyRef Name="ID_FacilityTypes" />
+            </Principal>
+            <Dependent Role="MedicalFacilities">
+              <PropertyRef Name="ID_FacilityTypes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceClaims_Inspectors">
+          <End Role="Inspectors" Type="Self.Inspectors" Multiplicity="1" />
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inspectors">
+              <PropertyRef Name="ID_Inspectors" />
+            </Principal>
+            <Dependent Role="InsuranceClaims">
+              <PropertyRef Name="ID_Inspectors" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InsuranceClaims_InsuranceContracts">
+          <End Role="InsuranceContracts" Type="Self.InsuranceContracts" Multiplicity="1" />
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceContracts">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Principal>
+            <Dependent Role="InsuranceClaims">
+              <PropertyRef Name="ID_InsuranceContracts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_InsuranceClaims">
+          <End Role="InsuranceClaims" Type="Self.InsuranceClaims" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsuranceClaims">
+              <PropertyRef Name="ID_InsuranceClaims" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ID_InsuranceClaims" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalInvoices_InvoiceStatuses">
+          <End Role="InvoiceStatuses" Type="Self.InvoiceStatuses" Multiplicity="1" />
+          <End Role="MedicalInvoices" Type="Self.MedicalInvoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceStatuses">
+              <PropertyRef Name="ID_InvoiceStatuses" />
+            </Principal>
+            <Dependent Role="MedicalInvoices">
+              <PropertyRef Name="ID_InvoiceStatuses" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalInvoices_MedicalFacilities">
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="1" />
+          <End Role="MedicalInvoices" Type="Self.MedicalInvoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalFacilities">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Principal>
+            <Dependent Role="MedicalInvoices">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Referrals_MedicalFacilities">
+          <End Role="MedicalFacilities" Type="Self.MedicalFacilities" Multiplicity="1" />
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalFacilities">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Principal>
+            <Dependent Role="Referrals">
+              <PropertyRef Name="ID_MedicalFacilities" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedicalInvoices_Referrals">
+          <End Role="Referrals" Type="Self.Referrals" Multiplicity="1" />
+          <End Role="MedicalInvoices" Type="Self.MedicalInvoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Referrals">
+              <PropertyRef Name="ID_Referrals" />
+            </Principal>
+            <Dependent Role="MedicalInvoices">
+              <PropertyRef Name="ID_Referrals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsuranceMedicalCompanyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" />
+          <EntitySet Name="ClaimStatuses" EntityType="Self.ClaimStatuses" />
+          <EntitySet Name="ClientPayments" EntityType="Self.ClientPayments" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="ContractStatuses" EntityType="Self.ContractStatuses" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="FacilityTypes" EntityType="Self.FacilityTypes" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" />
+          <EntitySet Name="Inspectors" EntityType="Self.Inspectors" />
+          <EntitySet Name="InsuranceClaims" EntityType="Self.InsuranceClaims" />
+          <EntitySet Name="InsuranceContracts" EntityType="Self.InsuranceContracts" />
+          <EntitySet Name="InvoiceStatuses" EntityType="Self.InvoiceStatuses" />
+          <EntitySet Name="MedicalFacilities" EntityType="Self.MedicalFacilities" />
+          <EntitySet Name="MedicalInvoices" EntityType="Self.MedicalInvoices" />
+          <EntitySet Name="PaymentStatuses" EntityType="Self.PaymentStatuses" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" />
+          <EntitySet Name="Referrals" EntityType="Self.Referrals" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Addresses_Cities" Association="Self.FK_Addresses_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Addresses" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Addresses" Association="Self.FK_Clients_Addresses">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalFacilities_Addresses" Association="Self.FK_MedicalFacilities_Addresses">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceClaims_ClaimStatuses" Association="Self.FK_InsuranceClaims_ClaimStatuses">
+            <End Role="ClaimStatuses" EntitySet="ClaimStatuses" />
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientPayments_InsuranceContracts" Association="Self.FK_ClientPayments_InsuranceContracts">
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+            <End Role="ClientPayments" EntitySet="ClientPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientPayments_PaymentStatuses" Association="Self.FK_ClientPayments_PaymentStatuses">
+            <End Role="PaymentStatuses" EntitySet="PaymentStatuses" />
+            <End Role="ClientPayments" EntitySet="ClientPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientPayments_PaymentTypes" Association="Self.FK_ClientPayments_PaymentTypes">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="ClientPayments" EntitySet="ClientPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Genders" Association="Self.FK_Clients_Genders">
+            <End Role="Genders" EntitySet="Genders" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContracts_Clients" Association="Self.FK_InsuranceContracts_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_Clients" Association="Self.FK_Referrals_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceContracts_ContractStatuses" Association="Self.FK_InsuranceContracts_ContractStatuses">
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalFacilities_FacilityTypes" Association="Self.FK_MedicalFacilities_FacilityTypes">
+            <End Role="FacilityTypes" EntitySet="FacilityTypes" />
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceClaims_Inspectors" Association="Self.FK_InsuranceClaims_Inspectors">
+            <End Role="Inspectors" EntitySet="Inspectors" />
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InsuranceClaims_InsuranceContracts" Association="Self.FK_InsuranceClaims_InsuranceContracts">
+            <End Role="InsuranceContracts" EntitySet="InsuranceContracts" />
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_InsuranceClaims" Association="Self.FK_Referrals_InsuranceClaims">
+            <End Role="InsuranceClaims" EntitySet="InsuranceClaims" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalInvoices_InvoiceStatuses" Association="Self.FK_MedicalInvoices_InvoiceStatuses">
+            <End Role="InvoiceStatuses" EntitySet="InvoiceStatuses" />
+            <End Role="MedicalInvoices" EntitySet="MedicalInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalInvoices_MedicalFacilities" Association="Self.FK_MedicalInvoices_MedicalFacilities">
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+            <End Role="MedicalInvoices" EntitySet="MedicalInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Referrals_MedicalFacilities" Association="Self.FK_Referrals_MedicalFacilities">
+            <End Role="MedicalFacilities" EntitySet="MedicalFacilities" />
+            <End Role="Referrals" EntitySet="Referrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicalInvoices_Referrals" Association="Self.FK_MedicalInvoices_Referrals">
+            <End Role="Referrals" EntitySet="Referrals" />
+            <End Role="MedicalInvoices" EntitySet="MedicalInvoices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище InsuranceMedicalCompanyModelContainer" CdmEntityContainer="InsuranceMedicalCompanyEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Addresses">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="ID_Addresses" ColumnName="ID_Addresses" />
+                <ScalarProperty Name="ID_Cities" ColumnName="ID_Cities" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Apartment" ColumnName="Apartment" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Cities">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="ID_Cities" ColumnName="ID_Cities" />
+                <ScalarProperty Name="ID_Countries" ColumnName="ID_Countries" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClaimStatuses">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.ClaimStatuses">
+              <MappingFragment StoreEntitySet="ClaimStatuses">
+                <ScalarProperty Name="ID_ClaimStatuses" ColumnName="ID_ClaimStatuses" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientPayments">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.ClientPayments">
+              <MappingFragment StoreEntitySet="ClientPayments">
+                <ScalarProperty Name="ID_ClientPayments" ColumnName="ID_ClientPayments" />
+                <ScalarProperty Name="ID_InsuranceContracts" ColumnName="ID_InsuranceContracts" />
+                <ScalarProperty Name="ID_PaymentTypes" ColumnName="ID_PaymentTypes" />
+                <ScalarProperty Name="ID_PaymentStatuses" ColumnName="ID_PaymentStatuses" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ID_Clients" ColumnName="ID_Clients" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="ID_Genders" ColumnName="ID_Genders" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID_Addresses" ColumnName="ID_Addresses" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractStatuses">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.ContractStatuses">
+              <MappingFragment StoreEntitySet="ContractStatuses">
+                <ScalarProperty Name="ID_ContractStatuses" ColumnName="ID_ContractStatuses" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="ID_Countries" ColumnName="ID_Countries" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityTypes">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.FacilityTypes">
+              <MappingFragment StoreEntitySet="FacilityTypes">
+                <ScalarProperty Name="ID_FacilityTypes" ColumnName="ID_FacilityTypes" />
+                <ScalarProperty Name="FacilityTypeName" ColumnName="FacilityTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Genders">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="ID_Genders" ColumnName="ID_Genders" />
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspectors">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Inspectors">
+              <MappingFragment StoreEntitySet="Inspectors">
+                <ScalarProperty Name="ID_Inspectors" ColumnName="ID_Inspectors" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsuranceClaims">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.InsuranceClaims">
+              <MappingFragment StoreEntitySet="InsuranceClaims">
+                <ScalarProperty Name="ID_InsuranceClaims" ColumnName="ID_InsuranceClaims" />
+                <ScalarProperty Name="ID_InsuranceContracts" ColumnName="ID_InsuranceContracts" />
+                <ScalarProperty Name="ID_Inspectors" ColumnName="ID_Inspectors" />
+                <ScalarProperty Name="ID_ClaimStatuses" ColumnName="ID_ClaimStatuses" />
+                <ScalarProperty Name="ClaimDate" ColumnName="ClaimDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsuranceContracts">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.InsuranceContracts">
+              <MappingFragment StoreEntitySet="InsuranceContracts">
+                <ScalarProperty Name="ID_InsuranceContracts" ColumnName="ID_InsuranceContracts" />
+                <ScalarProperty Name="ID_Clients" ColumnName="ID_Clients" />
+                <ScalarProperty Name="ID_ContractStatuses" ColumnName="ID_ContractStatuses" />
+                <ScalarProperty Name="PolicyNumber" ColumnName="PolicyNumber" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="PremiumAmount" ColumnName="PremiumAmount" />
+                <ScalarProperty Name="CoverageTerms" ColumnName="CoverageTerms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceStatuses">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.InvoiceStatuses">
+              <MappingFragment StoreEntitySet="InvoiceStatuses">
+                <ScalarProperty Name="ID_InvoiceStatuses" ColumnName="ID_InvoiceStatuses" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalFacilities">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.MedicalFacilities">
+              <MappingFragment StoreEntitySet="MedicalFacilities">
+                <ScalarProperty Name="ID_MedicalFacilities" ColumnName="ID_MedicalFacilities" />
+                <ScalarProperty Name="ID_FacilityTypes" ColumnName="ID_FacilityTypes" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="ID_Addresses" ColumnName="ID_Addresses" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalInvoices">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.MedicalInvoices">
+              <MappingFragment StoreEntitySet="MedicalInvoices">
+                <ScalarProperty Name="ID_MedicalInvoices" ColumnName="ID_MedicalInvoices" />
+                <ScalarProperty Name="ID_MedicalFacilities" ColumnName="ID_MedicalFacilities" />
+                <ScalarProperty Name="ID_Referrals" ColumnName="ID_Referrals" />
+                <ScalarProperty Name="ID_InvoiceStatuses" ColumnName="ID_InvoiceStatuses" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentStatuses">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.PaymentStatuses">
+              <MappingFragment StoreEntitySet="PaymentStatuses">
+                <ScalarProperty Name="ID_PaymentStatuses" ColumnName="ID_PaymentStatuses" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.PaymentTypes">
+              <MappingFragment StoreEntitySet="PaymentTypes">
+                <ScalarProperty Name="ID_PaymentTypes" ColumnName="ID_PaymentTypes" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Referrals">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Referrals">
+              <MappingFragment StoreEntitySet="Referrals">
+                <ScalarProperty Name="ID_Referrals" ColumnName="ID_Referrals" />
+                <ScalarProperty Name="ID_InsuranceClaims" ColumnName="ID_InsuranceClaims" />
+                <ScalarProperty Name="ID_Clients" ColumnName="ID_Clients" />
+                <ScalarProperty Name="ID_MedicalFacilities" ColumnName="ID_MedicalFacilities" />
+                <ScalarProperty Name="ReferralDate" ColumnName="ReferralDate" />
+                <ScalarProperty Name="ReferralNumber" ColumnName="ReferralNumber" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="InsuranceMedicalCompanyModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

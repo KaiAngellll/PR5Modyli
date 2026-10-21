@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2222881e742440d4ab4e1a721775d84f" Name="Diagram1">
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Addresses" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Cities" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.ClaimStatuses" Width="1.5" PointX="15.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.ClientPayments" Width="1.5" PointX="15" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Clients" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.ContractStatuses" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Countries" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.FacilityTypes" Width="1.5" PointX="8.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Genders" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Inspectors" Width="1.5" PointX="15.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.InsuranceClaims" Width="1.5" PointX="18" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.InsuranceContracts" Width="1.5" PointX="12.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.InvoiceStatuses" Width="1.5" PointX="20.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.MedicalFacilities" Width="1.5" PointX="10.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.MedicalInvoices" Width="1.5" PointX="22.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.PaymentStatuses" Width="1.5" PointX="12.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.PaymentTypes" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Referrals" Width="1.5" PointX="20.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Users" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Addresses_Cities" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Clients_Addresses" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_MedicalFacilities_Addresses" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Cities_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_InsuranceClaims_ClaimStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_ClientPayments_InsuranceContracts" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_ClientPayments_PaymentStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_ClientPayments_PaymentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Clients_Genders" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_InsuranceContracts_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Referrals_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_InsuranceContracts_ContractStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_MedicalFacilities_FacilityTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_InsuranceClaims_Inspectors" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_InsuranceClaims_InsuranceContracts" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Referrals_InsuranceClaims" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_MedicalInvoices_InvoiceStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_MedicalInvoices_MedicalFacilities" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Referrals_MedicalFacilities" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_MedicalInvoices_Referrals" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
