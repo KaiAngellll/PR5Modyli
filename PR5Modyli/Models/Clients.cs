@@ -30,10 +30,12 @@ namespace PR5Modyli.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public int ID_Addresses { get; set; }
+        public Nullable<int> ID_Users { get; set; }
     
         public virtual Addresses Addresses { get; set; }
         public virtual Genders Genders { get; set; }
         public virtual ICollection<InsuranceContracts> InsuranceContracts { get; set; }
         public virtual ICollection<Referrals> Referrals { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

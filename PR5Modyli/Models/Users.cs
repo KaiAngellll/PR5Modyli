@@ -14,8 +14,19 @@ namespace PR5Modyli.Models
     
     public partial class Users
     {
+        public Users()
+        {
+            this.Clients = new HashSet<Clients>();
+            this.Inspectors = new HashSet<Inspectors>();
+        }
+    
         public int UserId { get; set; }
         public string Login { get; set; }
         public string PasswordHash { get; set; }
+        public Nullable<int> ID_Roles { get; set; }
+    
+        public virtual ICollection<Clients> Clients { get; set; }
+        public virtual ICollection<Inspectors> Inspectors { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }

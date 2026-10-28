@@ -45,6 +45,10 @@
         <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_MedicalInvoices_MedicalFacilities" ManuallyRouted="false" />
         <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Referrals_MedicalFacilities" ManuallyRouted="false" />
         <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_MedicalInvoices_Referrals" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Clients_Users" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Inspectors_Users" />
+        <EntityTypeShape EntityType="InsuranceMedicalCompanyModel.Roles" Width="1.5" PointX="0.75" PointY="9.125" />
+        <AssociationConnector Association="InsuranceMedicalCompanyModel.FK_Users_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

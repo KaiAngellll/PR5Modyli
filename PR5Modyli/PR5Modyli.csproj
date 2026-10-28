@@ -119,6 +119,9 @@
     <Compile Include="Models\Referrals.cs">
       <DependentUpon>InsuranceModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Roles.cs">
+      <DependentUpon>InsuranceModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>InsuranceModel.tt</DependentUpon>
     </Compile>

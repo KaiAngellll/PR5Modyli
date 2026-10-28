@@ -45,5 +45,6 @@ namespace PR5Modyli.Models
         public DbSet<Referrals> Referrals { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Roles> Roles { get; set; }
     }
 }

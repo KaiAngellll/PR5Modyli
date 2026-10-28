@@ -25,7 +25,9 @@ namespace PR5Modyli.Models
         public string MiddleName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public Nullable<int> ID_Users { get; set; }
     
         public virtual ICollection<InsuranceClaims> InsuranceClaims { get; set; }
+        public virtual Users Users { get; set; }
     }
 }
